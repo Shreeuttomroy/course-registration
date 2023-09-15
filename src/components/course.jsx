@@ -1,7 +1,7 @@
 import { FaBookOpen } from 'react-icons/fa';
-const Course = (course) => {
-    const {selectHandler} = course;
-    const {image, title ,description, price, time} = course.course;
+import PropTypes from 'prop-types';
+const Course = ({course,selectHandler}) => {
+    const {image, title ,description, price, time} = course;
     // console.log(selectHandler);
     // console.log(course);
     return (  
@@ -14,10 +14,14 @@ const Course = (course) => {
                 <p><span className=' text-2xl'>$</span> Price: {price}</p>
                 <p className='w-fit flex items-center'><FaBookOpen fontSize={"25px"}></FaBookOpen> Credit: {time}</p>
             </div>
-            <button onClick={()=>selectHandler(course.course)} className='w-full py-3 px-2 text-lg font-semibold bg-[#2F80ED] text-[#FFFFFF] rounded-md'>Select</button>
+            <button onClick={()=>selectHandler(course)} className='w-full py-3 px-2 text-lg font-semibold bg-[#2F80ED] text-[#FFFFFF] rounded-md'>Select</button>
         </div>
         </>
     );
+}
+Course.propTypes = {
+    course: PropTypes.object.isRequired,
+    selectHandler: PropTypes.func.isRequired
 }
  
 export default Course;
